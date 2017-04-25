@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <math.h>
 
-int main(void)
+void main(void)
 {
 	/*Se definen las variables del problema*/
 
-	float nu = 10E-4;
+	float nu = 10E-2;
 	float T[100][100];
 	float T_pasado[100][100];	
 	float dx = 1;
@@ -187,7 +187,7 @@ int main(void)
 		{
 			for(j=0;j<100;j++)
 			{
-				T[i][j] = T_pasado[i][j] + r*(T_pasado[i][(j+1) % 100] + T_pasado[i][(j-1) % 100] + T_pasado[(i+1) % 100][j] + T_pasado[(i-1) % 100][j] - 4*T_pasado[i][j]);
+				T[i][j] = T_pasado[i][j] + r*(T_pasado[i][mod(j+1, 100)] + T_pasado[i][mod(j-1,100)] + T_pasado[mod(i+1,100)][j] + T_pasado[mod(i-1,100)][j] - 4*T_pasado[i][j]);
 				promedio += T[i][j];
 			}
 		}
@@ -499,7 +499,7 @@ int main(void)
 			{
 				if(!((i>=20) && (i<40) && (j>=40) && (j<60)))
 				{
-					T[i][j] = T_pasado[i][j] + r*(T_pasado[i][(j+1) % 100] + T_pasado[i][(j-1) % 100] + T_pasado[(i+1) % 100][j] + T_pasado[(i-1) % 100][j] - 4*T_pasado[i][j]);
+					T[i][j] = T_pasado[i][j] + r*(T_pasado[i][mod(j+1, 100)] + T_pasado[i][mod(j-1,100)] + T_pasado[mod(i+1,100)][j] + T_pasado[mod(i-1,100)][j] - 4*T_pasado[i][j]);
 				}
 				promedio += T[i][j];
 			}
@@ -640,3 +640,22 @@ int main(void)
 	fclose(fija_2_promedio);
 
 } 	
+
+
+int mod (int i, int j)
+{	
+	int resultado;
+	if(j > 0)  
+	{ 
+		resultado = i % j;
+	}
+	else
+	{
+		resultado = i % -j;
+	}
+	if(resultado < 0)
+	{
+		resultado += j;
+	}
+	return resultado;
+}
