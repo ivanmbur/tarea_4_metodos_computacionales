@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+int mod(int i, int j);
+
 void main(void)
 {
 	/*Se definen las variables del problema*/

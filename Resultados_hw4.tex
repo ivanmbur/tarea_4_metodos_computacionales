@@ -12,6 +12,10 @@
 
 	\maketitle
 
+	En la figura \ref{fig:Tvs.x} se puede evidenciar la diferencia que generan distintas condiciones iniciales. Es de notar que las condiciones abiertas y peri\'odicas permiten cambios en la temperatura en la frontera de la placa. En particular, es evidente el cambio libre que se da en las condiciones abiertas. En general las gr\'aficas muestran un comportmiento esperado y es de particular importancia como en $x=0$ y $x=100$ las variaciones de temperatura tienden a ser menores que en $y=0$ y $y=100$. Esto se debe a que en $x=0$ la temperatura se ha ido mientras que en $x=100$ no ha habido tiempo para que los cambios de temperatura lleguen a el. Esto se evidencia de manera clara en la figura \ref{fig:abierta_1_2500}. 
+
+	Sin embargo, lo que verdaderamente da informaci\'on f\'isica son los resultados mostrados en la figura \ref{fig:Tvs.t}. Es importante notar que en el caso 1 la temperatura promedio peri\'odica es constante como esperado. Bajo condiciones de frontera fijas esta disminuye pues la placa se enfr\'ia bajo contacto con el medio ambiente (el ba\~no t\'ermico en el que se encuentra). Sin embargo en el caso de condiciones abiertas la temperatura aumenta lo cual no es esperado. Esto refleja lo dif\'icil que es aplicar condiciones de fronteras f\'isicas en simulaciones f\'isicas. En el caso 2 los comportamientos son similares pero hay un aumento neto de temperatura debido a la energ\'ia constante que se est\'a inyectando en el sistema.
+
 	\begin{figure}
 		\centering
 		\begin{subfigure}{\textwidth}
@@ -134,7 +138,7 @@
 			\includegraphics[width = 0.9\textwidth]{2_promedio.pdf}
 			\caption{\label{fig:2_promedio}}
 			\end{subfigure}
-		\caption{\label{fig:Tvst} Se muestra el promedio espacial de la temperatura a trav\'es del tiempo}
+		\caption{\label{fig:Tvs.t} Se muestra el promedio espacial de la temperatura a trav\'es del tiempo.}
 	\end{figure}
 
 \end{document}
