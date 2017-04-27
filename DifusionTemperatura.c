@@ -152,6 +152,17 @@ void main(void)
 		}
 	}
 
+	FILE *animacion = fopen("animacion_0.txt", "w");
+	for(i=0;i<100;i++)
+	{
+		for(j=0;j<100;j++)
+		{
+			fprintf(animacion, "%f ", T[i][j]);
+		}
+		fprintf(animacion, "\n");
+	}
+	fclose(animacion);
+
 	FILE *periodica_1_0 = fopen("periodica_1_0.txt", "w");
 	for(i=0;i<100;i++)
 	{
@@ -193,7 +204,21 @@ void main(void)
 				promedio += T[i][j];
 			}
 		}
-		
+	
+		if(((n+1) % 50) == 0) 
+		{
+			FILE *animacion = fopen("animacion_%f.txt", (n+1)*dt, "w");
+			for(i=0;i<100;i++)
+			{
+				for(j=0;j<100;j++)
+				{
+					fprintf(animacion, "%f ", T[i][j]);
+				}
+				fprintf(animacion, "\n");
+			}
+			fclose(animacion);
+		}
+	
 		promedio = promedio/(100*100);
 		fprintf(periodica_1_promedio, "%f %f\n", ((n+1)*dt), promedio);
 
@@ -225,6 +250,8 @@ void main(void)
 			fclose(periodica_1_2500);
 		}
 	}
+	
+	fclose(animacion);
 	fclose(periodica_1_promedio);
 	
 	/*Condiciones de frontera fijas*/
