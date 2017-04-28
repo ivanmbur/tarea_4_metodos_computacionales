@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 int mod(int i, int j);
 
@@ -205,9 +206,11 @@ void main(void)
 			}
 		}
 	
-		if(((n+1) % 50) == 0) 
+		if(((n+1) % 4) == 0) 
 		{
-			FILE *animacion = fopen("animacion_%f.txt", (n+1)*dt, "w");
+			char nombre[200];
+			sprintf(nombre, "animacion_%d.txt", (int)((n+1)*dt));	
+			FILE *animacion = fopen(nombre, "w");
 			for(i=0;i<100;i++)
 			{
 				for(j=0;j<100;j++)
@@ -251,7 +254,6 @@ void main(void)
 		}
 	}
 	
-	fclose(animacion);
 	fclose(periodica_1_promedio);
 	
 	/*Condiciones de frontera fijas*/
