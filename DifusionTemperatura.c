@@ -9,7 +9,7 @@ void main(void)
 {
 	/*Se definen las variables del problema*/
 
-	float nu = 1.0;
+	float nu = 10E-2;
 	float T[100][100];
 	float T_pasado[100][100];	
 	float dx = 1;
