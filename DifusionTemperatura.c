@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <string.h>
 
 int mod(int i, int j);
 
@@ -9,7 +8,7 @@ void main(void)
 {
 	/*Se definen las variables del problema*/
 
-	float nu = 10E-2;
+	float nu = 1.0;
 	float T[100][100];
 	float T_pasado[100][100];	
 	float dx = 1;
@@ -153,17 +152,6 @@ void main(void)
 		}
 	}
 
-	FILE *animacion = fopen("animacion_0.txt", "w");
-	for(i=0;i<100;i++)
-	{
-		for(j=0;j<100;j++)
-		{
-			fprintf(animacion, "%f ", T[i][j]);
-		}
-		fprintf(animacion, "\n");
-	}
-	fclose(animacion);
-
 	FILE *periodica_1_0 = fopen("periodica_1_0.txt", "w");
 	for(i=0;i<100;i++)
 	{
@@ -205,23 +193,7 @@ void main(void)
 				promedio += T[i][j];
 			}
 		}
-	
-		if(((n+1) % 4) == 0) 
-		{
-			char nombre[200];
-			sprintf(nombre, "animacion_%d.txt", (int)((n+1)*dt));	
-			FILE *animacion = fopen(nombre, "w");
-			for(i=0;i<100;i++)
-			{
-				for(j=0;j<100;j++)
-				{
-					fprintf(animacion, "%f ", T[i][j]);
-				}
-				fprintf(animacion, "\n");
-			}
-			fclose(animacion);
-		}
-	
+		
 		promedio = promedio/(100*100);
 		fprintf(periodica_1_promedio, "%f %f\n", ((n+1)*dt), promedio);
 
@@ -253,7 +225,6 @@ void main(void)
 			fclose(periodica_1_2500);
 		}
 	}
-	
 	fclose(periodica_1_promedio);
 	
 	/*Condiciones de frontera fijas*/
